@@ -2,7 +2,7 @@ import fs from 'fs';
 import { describe, expect, it } from '@jest/globals';
 import Oas, { Operation } from 'oas';
 import OASNormalize from 'oas-normalize';
-import VariableFieldsGenerator from '../../src/generator/VariableFieldsGenerator.ts';
+import VariableFieldsGenerator from '../../src/generator/variable-fields-generator.ts';
 
 describe('sum module', () => {
   it('adds 1 + 2 to equal 3', async () => {
@@ -17,7 +17,7 @@ describe('sum module', () => {
     const operation: Operation = oas.operation('/user', 'post', {});
     const statusCode: string = '200';
     const content: string = 'application/json';
-    // @ts-ignore: OpenAPIV3_1.ResponseObject does have a content method
+    // @ts-ignore: OpenAPIV3_1.Respons eObject does have a content method
     const schema =
       operation?.schema?.responses?.[statusCode]?.content?.[content]?.schema;
     expect(schema).toBeTruthy();

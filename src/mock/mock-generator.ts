@@ -4,14 +4,15 @@ import type { JsonValue } from 'type-fest';
 import _ from 'lodash';
 import { HttpMethods } from 'oas/dist/rmoas.types.js';
 import OASNormalize from 'oas-normalize';
-import { IGenerator } from '../generator/IGenerator.ts';
+import { Generator } from '../generator/generator.ts';
 
+// eslint-disable-next-line import/prefer-default-export
 export class MockGenerator {
   #schemaStr: string;
 
   #oas: Oas;
 
-  #generators: Array<IGenerator> = [];
+  #generators: Array<Generator> = [];
 
   constructor(schemaStr: string) {
     this.#schemaStr = schemaStr;

@@ -2,9 +2,10 @@
   "extends": "@tsconfig/node18/tsconfig.json",
   "compilerOptions": {
     "allowImportingTsExtensions": true,
+//    "emitDeclarationOnly": true,
     "declaration": true,
 //    "moduleResolution": "node18",
-    "outDir": "target/",
+    "outDir": "dist/",
     "rootDir": "src/",
     "sourceMap": true,
     "target": "es2016"
@@ -12,5 +13,6 @@
   "ts-node": {
     "esm": true,
     "experimentalSpecifierResolution": "node"
-  }
+  },
+  "exclude": ["test/**"]
 }

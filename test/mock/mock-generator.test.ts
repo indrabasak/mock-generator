@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { describe, it } from '@jest/globals';
-import { MockGenerator } from '../../src/mock/MockGenerator.ts';
+import { MockGenerator } from '../../src/mock/mock-generator.ts';
 
 describe('sum module', () => {
   it('adds 1 + 2 to equal 3', async () => {
