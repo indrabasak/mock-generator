@@ -10,6 +10,7 @@ import { Generator } from '../generator/generator.ts';
 export class MockGenerator {
   #schemaStr: string;
 
+  // @ts-ignore
   #oas: Oas;
 
   #generators: Array<Generator> = [];
@@ -19,8 +20,10 @@ export class MockGenerator {
   }
 
   public async init() {
+    // @ts-ignore
     const oasNormalize = new OASNormalize(this.#schemaStr);
     const jsonSchema = await oasNormalize.validate({ convertToLatest: true });
+    // @ts-ignore
     this.#oas = new Oas(jsonSchema);
     await this.#oas.dereference();
   }
@@ -52,11 +55,9 @@ export class MockGenerator {
       {}
     );
     // @ts-ignore: OpenAPIV3_1.ResponseObject does have a content method
-    const schema =
-      operation?.schema?.responses?.[statusCode]?.content?.[content]?.schema;
+    const schema = operation?.schema?.responses?.[statusCode]?.content?.[content]?.schema;
 
     if (!schema || _.isEmpty(schema)) {
-      // path, method, and statusCode combination does not exist
       throw new Error(
         `No Response JSON Schema for:\nPath: ${path}\nMethod: ${method}\nStatus Code: ${statusCode}\nContent: ${content}\n`
       );
