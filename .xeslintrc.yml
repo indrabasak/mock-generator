@@ -1,25 +1,39 @@
+root: true
 env:
   node: true
   es2021: true
   jest/globals: true
 extends:
   - airbnb-base
-  - eslint:recommended
   - plugin:@typescript-eslint/recommended
   - plugin:prettier/recommended
-parser: '@typescript-eslint/parser'
+parser: "@typescript-eslint/parser"
 parserOptions:
-  project: './tsconfig.json'
+  project: "./tsconfig.json"
   sourceType: module
 plugins:
-  - '@typescript-eslint'
+  - "@typescript-eslint"
   - jest
+settings:
+  import/parsers:
+    "@typescript-eslint/parser":
+      - ".ts"
+      - ".tsx"
+  import/resolver:
+    typescript: {}
+    node:
+      extensions:
+        - ".js"
+        - ".jsx"
+        - ".ts"
+        - ".tsx"
+
 rules:
   no-console: off
   semi: 1
   quotes: ['error', 'single']
   no-trailing-spaces: [2, { 'skipBlankLines': true }]
-  prettier/prettier: error
+#  prettier/prettier: error
   no-unused-vars: error
   no-use-before-define: [ 'error', { functions: false, variables: true } ]
   prefer-destructuring: ['error', { object: true, array: false}]

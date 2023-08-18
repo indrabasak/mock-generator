@@ -1,7 +1,7 @@
-import type { JSONSchema7 } from 'json-schema';
+import type {JSONSchema7} from 'json-schema';
 import {JsonValue} from "type-fest";
 
-interface IGenerator {
+export interface IGenerator {
   generate(schema: JSONSchema7): Array<JsonValue>;
 }
 
@@ -20,5 +20,3 @@ interface IGenerator {
 //     return ctor;
 //   }
 // }
-
-export default IGenerator;

@@ -131,3 +131,4 @@ dist
 /yarn.lock
 /.idea/
 /target/
+/test-report.xml

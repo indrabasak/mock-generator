@@ -3,12 +3,14 @@ import type { JSONSchema7 } from 'json-schema';
 import type { JsonValue } from 'type-fest';
 import _ from 'lodash';
 import { HttpMethods } from 'oas/dist/rmoas.types.js';
-import {IGenerator} from "../generator/i-generator.ts";
-import OASNormalize from "oas-normalize";
+import OASNormalize from 'oas-normalize';
+import { IGenerator } from '../generator/IGenerator.ts';
 
-class MockGenerator {
+export class MockGenerator {
   #schemaStr: string;
+
   #oas: Oas;
+
   #generators: Array<IGenerator> = [];
 
   constructor(schemaStr: string) {
@@ -62,5 +64,3 @@ class MockGenerator {
     return schema;
   }
 }
-
-export default MockGenerator;

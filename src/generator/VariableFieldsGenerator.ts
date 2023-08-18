@@ -1,7 +1,7 @@
-import { JSONSchema7 } from 'json-schema';
-import type { JsonValue } from 'type-fest';
-import { JSONSchemaFaker } from 'json-schema-faker';
-import IGenerator from './i-generator.ts';
+import {JSONSchema7} from 'json-schema';
+import type {JsonValue} from 'type-fest';
+import {JSONSchemaFaker} from 'json-schema-faker';
+import IGenerator from './IGenerator.ts';
 
 class VariableFieldsGenerator implements IGenerator {
 // @IGenerator.register
