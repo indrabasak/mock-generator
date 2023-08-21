@@ -2,11 +2,11 @@
 import { describe, expect, it } from '@jest/globals';
 // eslint-disable-next-line import/no-unresolved
 import { JSONSchema7 } from 'json-schema';
-import MinLengthGenerator from '../../src/generator/min-length-generator.ts';
+import MaxLengthGenerator from '../../src/generator/max-length-generator.ts';
 
 describe('sum module', () => {
   it('adds 1 + 2 to equal 3', async () => {
-    const schema: JSONSchema7 = {
+    const spec: JSONSchema7 = {
       title: 'User',
       type: 'object',
       properties: {
@@ -59,8 +59,8 @@ describe('sum module', () => {
       required: ['id', 'firstName', 'lastName', 'email', 'emailVerified']
     };
 
-    const generator = new MinLengthGenerator();
-    const responses = generator.generate(schema);
+    const generator = new MaxLengthGenerator();
+    const responses = generator.generate(spec);
     expect(responses.length > 0).toBeTruthy();
     console.log(responses);
   });
