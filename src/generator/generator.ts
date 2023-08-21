@@ -1,5 +1,5 @@
-import type {JSONSchema7} from 'json-schema';
-import {JsonValue} from "type-fest";
+import type { JSONSchema7 } from 'json-schema';
+import { JsonValue } from 'type-fest';
 
 export interface Generator {
   generate(schema: JSONSchema7): Array<JsonValue>;
