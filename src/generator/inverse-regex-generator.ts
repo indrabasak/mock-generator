@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/no-unresolved
-import { JSONSchema7 } from 'json-schema';
+import type { JSONSchema7 } from 'json-schema';
 // eslint-disable-next-line import/no-unresolved
 import { JsonValue } from 'type-fest';
 import { JSONSchemaFaker } from 'json-schema-faker';

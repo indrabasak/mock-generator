@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/no-unresolved
-import { JSONSchema7 } from 'json-schema';
+import type { JSONSchema7 } from 'json-schema';
 import type { JsonValue } from 'type-fest';
 import { JSONSchemaFaker } from 'json-schema-faker';
 import { Generator } from './generator.ts';

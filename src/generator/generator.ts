@@ -1,7 +1,8 @@
 import type { JSONSchema7 } from 'json-schema';
-import { JsonValue } from 'type-fest';
+import type { JsonValue } from 'type-fest';
 
 export interface Generator {
+  // eslint-disable-next-line no-unused-vars
   generate(schema: JSONSchema7): Array<JsonValue>;
 }
 

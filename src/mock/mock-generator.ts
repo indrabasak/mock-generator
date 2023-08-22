@@ -5,7 +5,7 @@ import type { JsonValue } from 'type-fest';
 import _ from 'lodash';
 import { HttpMethods } from 'oas/dist/rmoas.types.js';
 import OASNormalize from 'oas-normalize';
-import { Generator } from '../generator/generator.ts';
+import GeneratorRegistry from '../generator/generator-registry.ts';
 
 // eslint-disable-next-line import/prefer-default-export
 export class MockGenerator {
@@ -13,8 +13,6 @@ export class MockGenerator {
 
   // @ts-ignore TS2351: This expression is not constructable.
   #oas: Oas;
-
-  #generators: Array<Generator> = [];
 
   constructor(schemaStr: string) {
     this.#schemaStr = schemaStr;
@@ -38,7 +36,22 @@ export class MockGenerator {
     const schema = this.#getResponseSchema(path, method, statusCode);
     const responses: Array<JsonValue> = [];
 
-    this.#generators.forEach((generator) => {
+    GeneratorRegistry.getValidGenerators().forEach((generator) => {
+      responses.push(generator.generate(schema));
+    });
+
+    return responses;
+  }
+
+  public getInvalidMockResponses(
+    path: string,
+    method: string = 'get',
+    statusCode: string = '200'
+  ): Array<JsonValue> {
+    const schema = this.#getResponseSchema(path, method, statusCode);
+    const responses: Array<JsonValue> = [];
+
+    GeneratorRegistry.getInvalidGenerators().forEach((generator) => {
       responses.push(generator.generate(schema));
     });
 
@@ -56,8 +69,9 @@ export class MockGenerator {
       method as HttpMethods,
       {}
     );
-    // @ts-ignore: OpenAPIV3_1.ResponseObject does have a content method
+
     const schema =
+      // @ts-ignore: OpenAPIV3_1.ResponseObject does have a content method
       operation?.schema?.responses?.[statusCode]?.content?.[content]?.schema;
 
     if (!schema || _.isEmpty(schema)) {
