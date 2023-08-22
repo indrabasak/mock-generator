@@ -2,7 +2,6 @@
 import { JSONSchema7 } from 'json-schema';
 // eslint-disable-next-line import/no-unresolved
 import { JsonValue } from 'type-fest';
-import { JSONSchemaFaker } from 'json-schema-faker';
 import { Generator } from './generator.ts';
 
 abstract class AbstractGenerator implements Generator {
@@ -40,8 +39,6 @@ abstract class AbstractGenerator implements Generator {
     fields: Set<string>,
     allFieldsRsp: JsonValue,
     responses: Array<JsonValue>,
-    lhsProperty: string,
-    rhsProperty: string,
     parentKey: string | null
   ): void {
     fields.forEach((field) => {
@@ -50,9 +47,6 @@ abstract class AbstractGenerator implements Generator {
       if (tokens.length === 1) {
         // @ts-ignore the properties field exist in a schema
         const def = schema.properties[field] as JSONSchema7;
-        const clonedDef = JSON.parse(JSON.stringify(def)) as JSONSchema7;
-        // @ts-ignore using array notation
-        clonedDef[lhsProperty] = clonedDef[rhsProperty];
         if (parentKey) {
           const originalKey = `${parentKey}.${field}`;
           const newTokens = originalKey.split('.');
@@ -60,10 +54,9 @@ abstract class AbstractGenerator implements Generator {
           for (let i = 0; i < newTokens.length - 1; i += 1) {
             rspObj = rspObj[newTokens[i]];
           }
-          rspObj[newTokens[newTokens.length - 1]] =
-            JSONSchemaFaker.generate(clonedDef);
+          rspObj[newTokens[newTokens.length - 1]] = this.generateValue(def);
         } else {
-          clonedRsp[field] = JSONSchemaFaker.generate(clonedDef);
+          clonedRsp[field] = this.generateValue(def);
         }
         responses.push(clonedRsp);
       } else {
@@ -81,18 +74,13 @@ abstract class AbstractGenerator implements Generator {
         if (parentKey) {
           newParentKey = `${parentKey}.${tokens[0]}`;
         }
-        this.getResponse(
-          def,
-          newFields,
-          allFieldsRsp,
-          responses,
-          lhsProperty,
-          rhsProperty,
-          newParentKey
-        );
+        this.getResponse(def, newFields, allFieldsRsp, responses, newParentKey);
       }
     });
   }
+
+  // eslint-disable-next-line no-unused-vars
+  abstract generateValue(property: JSONSchema7): JsonValue;
 }
 
 export default AbstractGenerator;

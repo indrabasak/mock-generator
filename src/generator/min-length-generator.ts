@@ -18,17 +18,17 @@ class MinLengthGenerator extends AbstractGenerator implements Generator {
       requiredOnly: false
     });
     const allFieldsRsp = JSONSchemaFaker.generate(schema);
-    this.getResponse(
-      schema,
-      minFields,
-      allFieldsRsp,
-      responses,
-      'maxLength',
-      'minLength',
-      null
-    );
+    this.getResponse(schema, minFields, allFieldsRsp, responses, null);
 
     return responses;
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  public generateValue(property: JSONSchema7): JsonValue {
+    const clonedProperty = JSON.parse(JSON.stringify(property)) as JSONSchema7;
+    clonedProperty.maxLength = clonedProperty.minLength;
+
+    return JSONSchemaFaker.generate(clonedProperty);
   }
 }
 
