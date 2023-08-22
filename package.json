@@ -10,7 +10,8 @@
   "private": false,
   "scripts": {
     "build": "rm -rf dist && tsc",
-    "test": "NODE_ENV=test ./node_modules/.bin/jest --silent --coverage -c jest.config.cjs"
+    "test": "NODE_ENV=test ./node_modules/.bin/jest --silent --coverage -c jest.config.cjs",
+    "lint": "eslint ./src  ./test -f table"
   },
   "devDependencies": {
     "@babel/core": "^7.22.10",

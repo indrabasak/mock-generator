@@ -13,11 +13,11 @@ class GeneratorRegistry {
 
   static #invalidGenerators: Array<Generator> = [new InverseRegexGenerator()];
 
-  public static getValidGenerators() {
+  public static getValidGenerators(): Array<Generator> {
     return this.#validGenerators;
   }
 
-  public static getInvalidGenerators() {
+  public static getInvalidGenerators(): Array<Generator> {
     return this.#invalidGenerators;
   }
 }
