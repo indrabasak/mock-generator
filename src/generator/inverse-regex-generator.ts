@@ -7,20 +7,12 @@ import AbstractGenerator from './abstract-generator.ts';
 import { Generator } from './generator.ts';
 
 class InverseRegexGenerator extends AbstractGenerator implements Generator {
-  // eslint-disable-next-line class-methods-use-this
+  constructor() {
+    super('pattern');
+  }
+
   public generate(schema: JSONSchema7): Array<JsonValue> {
-    const fields = new Set<string>();
-    this.getFields(schema, fields, 'maxLength', null);
-
-    const responses: Array<JsonValue> = [];
-    JSONSchemaFaker.option({
-      alwaysFakeOptionals: true,
-      requiredOnly: false
-    });
-    const allFieldsRsp = JSONSchemaFaker.generate(schema);
-    this.getResponse(schema, fields, allFieldsRsp, responses, null);
-
-    return responses;
+    return super.generate(schema);
   }
 
   // eslint-disable-next-line class-methods-use-this

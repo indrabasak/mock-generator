@@ -1,6 +1,7 @@
 import Oas, { Operation } from 'oas';
 import type { JSONSchema7 } from 'json-schema';
 import type { JsonValue } from 'type-fest';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import _ from 'lodash';
 import { HttpMethods } from 'oas/dist/rmoas.types.js';
 import OASNormalize from 'oas-normalize';
@@ -10,7 +11,7 @@ import { Generator } from '../generator/generator.ts';
 export class MockGenerator {
   #schemaStr: string;
 
-  // @ts-ignore
+  // @ts-ignore TS2351: This expression is not constructable.
   #oas: Oas;
 
   #generators: Array<Generator> = [];
@@ -20,10 +21,11 @@ export class MockGenerator {
   }
 
   public async init() {
-    // @ts-ignore
+    // @ts-ignore TS2351: This expression is not constructable.
     const oasNormalize = new OASNormalize(this.#schemaStr);
     const jsonSchema = await oasNormalize.validate({ convertToLatest: true });
-    // @ts-ignore
+
+    // @ts-ignore TS2351: This expression is not constructable.
     this.#oas = new Oas(jsonSchema);
     await this.#oas.dereference();
   }
@@ -55,7 +57,8 @@ export class MockGenerator {
       {}
     );
     // @ts-ignore: OpenAPIV3_1.ResponseObject does have a content method
-    const schema = operation?.schema?.responses?.[statusCode]?.content?.[content]?.schema;
+    const schema =
+      operation?.schema?.responses?.[statusCode]?.content?.[content]?.schema;
 
     if (!schema || _.isEmpty(schema)) {
       throw new Error(

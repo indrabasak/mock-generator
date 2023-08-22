@@ -3,22 +3,42 @@ import { JSONSchema7 } from 'json-schema';
 // eslint-disable-next-line import/no-unresolved
 import { JsonValue } from 'type-fest';
 import { Generator } from './generator.ts';
+import {JSONSchemaFaker} from "json-schema-faker";
 
 abstract class AbstractGenerator implements Generator {
+  #attr: string;
+
+  constructor(attr: string) {
+    this.#attr = attr;
+  }
+
   // eslint-disable-next-line no-unused-vars
-  abstract generate(schema: JSONSchema7): Array<JsonValue>;
+  public generate(schema: JSONSchema7): Array<JsonValue> {
+    const fields = new Set<string>();
+    this.getFields(schema, fields, this.#attr, null);
+
+    const responses: Array<JsonValue> = [];
+    JSONSchemaFaker.option({
+      alwaysFakeOptionals: true,
+      requiredOnly: false
+    });
+    const allFieldsRsp = JSONSchemaFaker.generate(schema);
+    this.getResponse(schema, fields, allFieldsRsp, responses, null);
+
+    return responses;
+  }
 
   public getFields(
     schema: JSONSchema7,
     fields: Set<string>,
-    property: string,
+    attr: string,
     parentKey: string | null
   ): void {
     // eslint-disable-next-line no-restricted-syntax
     for (const [key, value] of Object.entries(schema.properties as object)) {
       const def = value as JSONSchema7;
       // @ts-ignore using array notation
-      if (def.type === 'string' && def[property]) {
+      if (def.type === 'string' && def[attr]) {
         if (parentKey) {
           fields.add(`${parentKey}.${key}`);
         } else {
@@ -26,9 +46,9 @@ abstract class AbstractGenerator implements Generator {
         }
       } else if (def.type === 'object' && def.properties) {
         if (parentKey) {
-          this.getFields(def, fields, property, `${parentKey}.${key}`);
+          this.getFields(def, fields, attr, `${parentKey}.${key}`);
         } else {
-          this.getFields(def, fields, property, key);
+          this.getFields(def, fields, attr, key);
         }
       }
     }
