@@ -1,6 +1,6 @@
 {
   "name": "mock-generator",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "description": "generates mock sample data from an Open API Spec",
   "type": "module",
   "main": "index.js",
@@ -12,6 +12,12 @@
     "build": "rm -rf dist && tsc",
     "test": "NODE_ENV=test ./node_modules/.bin/jest --silent --coverage -c jest.config.cjs",
     "lint": "eslint ./src  ./test -f table"
+  },
+  "bin": {
+    "mockgen": "bin/generator-util.ts"
+  },
+  "publishConfig": {
+    "registry": "https://npm.autodesk.com:443/artifactory/api/npm/autodesk-npm/"
   },
   "devDependencies": {
     "@babel/core": "^7.22.10",
