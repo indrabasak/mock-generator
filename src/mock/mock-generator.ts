@@ -14,17 +14,26 @@ export class MockGenerator {
   // @ts-ignore TS2351: This expression is not constructable.
   #oas: Oas;
 
+  public static async getMockGenerator(
+    schemaStr: string
+  ): Promise<MockGenerator> {
+    const mockGenerator = new MockGenerator(schemaStr);
+    await mockGenerator.init();
+
+    return mockGenerator;
+  }
+
   constructor(schemaStr: string) {
     this.#schemaStr = schemaStr;
   }
 
   public async init() {
     // @ts-ignore TS2351: This expression is not constructable.
-    const oasNormalize = new OASNormalize(this.#schemaStr);
+    const oasNormalize = new OASNormalize.default(this.#schemaStr);
     const jsonSchema = await oasNormalize.validate({ convertToLatest: true });
 
     // @ts-ignore TS2351: This expression is not constructable.
-    this.#oas = new Oas(jsonSchema);
+    this.#oas = new Oas.default(jsonSchema);
     await this.#oas.dereference();
   }
 
