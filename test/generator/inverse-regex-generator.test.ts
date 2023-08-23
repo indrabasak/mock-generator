@@ -1,11 +1,10 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { describe, expect, it } from '@jest/globals';
-// eslint-disable-next-line import/no-unresolved
-import { JSONSchema7 } from 'json-schema';
+import type { JSONSchema7 } from 'json-schema';
 import InverseRegexGenerator from '../../src/generator/inverse-regex-generator.ts';
 
 describe('sum module', () => {
-  it('adds 1 + 2 to equal 3', async () => {
+  it('test invalid schema for string properties with pattern', async () => {
     const spec: JSONSchema7 = {
       title: 'User',
       type: 'object',
