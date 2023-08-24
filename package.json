@@ -1,6 +1,6 @@
 {
   "name": "mock-generator",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "generates mock sample data from an Open API Spec",
   "type": "module",
   "repository": "https://github.com/indrabasak/mock-generator.git",
