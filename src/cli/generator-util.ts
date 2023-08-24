@@ -1,7 +1,7 @@
 import fs from 'fs';
 import { Command, InvalidArgumentError, Option } from 'commander';
-import { MockGenerator } from '../mock/mock-generator.ts';
-import FileUtil from './file-util.ts';
+import { MockGenerator } from '../src/mock/mock-generator.ts';
+import FileUtil from '../src/util/file-util.ts';
 
 // @ts-ignore hello
 // eslint-disable-next-line no-unused-vars

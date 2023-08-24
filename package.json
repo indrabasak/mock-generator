@@ -1,9 +1,8 @@
 {
   "name": "mock-generator",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "generates mock sample data from an Open API Spec",
   "type": "module",
-  "main": "index.js",
   "repository": "https://github.com/indrabasak/mock-generator.git",
   "author": "indra.basak1@gmail.com",
   "license": "MIT",
@@ -14,7 +13,7 @@
     "lint": "eslint ./src  ./test -f table"
   },
   "bin": {
-    "mockgen": "bin/generator-util.ts"
+    "mockgen": "dist/src/cli/generator-util.js"
   },
   "publishConfig": {
     "registry": "https://npm.autodesk.com:443/artifactory/api/npm/autodesk-npm/"
