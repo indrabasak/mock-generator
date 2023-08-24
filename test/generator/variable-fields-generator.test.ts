@@ -2,7 +2,7 @@ import fs from 'fs';
 import { describe, expect, it } from '@jest/globals';
 import Oas, { Operation } from 'oas';
 import OASNormalize from 'oas-normalize';
-import VariableFieldsGenerator from '../../src/generator/variable-fields-generator.ts';
+import VariableFieldsGenerator from '../../src/generator/variable-fields-generator';
 
 describe('sum module', () => {
   it('adds 1 + 2 to equal 3', async () => {

@@ -1,10 +1,9 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { describe, expect, it } from '@jest/globals';
+import { describe, it } from '@jest/globals';
 import type { JSONSchema7 } from 'json-schema';
-import { JsonValue } from 'type-fest';
 import { JSONSchemaFaker } from 'json-schema-faker';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import Ajv from 'ajv';
-import InverseRegexGenerator from '../../src/generator/inverse-regex-generator.ts';
 
 const hostname =  '[a-zA-Z]{1,33}\\.[a-z]{2,4}';
 const FRAGMENT = '[a-zA-Z][a-zA-Z0-9+-.]*';
@@ -52,9 +51,9 @@ describe('sum module', () => {
           type: 'string',
           pattern: '[A-Z]+',
           minLength: 2,
-          maxLength: 100,
+          maxLength: 100
           // nullable: false
-          not: {type:  'object'}
+          // not: {type:  'object'}
         },
         email: { type: 'string', format: 'email' },
         dateOfBirth: { type: 'string', format: 'date' },
@@ -91,7 +90,7 @@ describe('sum module', () => {
     // @ts-ignore this is constructable
     const ajv = new Ajv({
       validateSchema: true,
-      jsonPointers: true,
+      // jsonPointers: true,
       logger: false,
       strict: true,
       formats: {

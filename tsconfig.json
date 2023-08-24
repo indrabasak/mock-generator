@@ -1,14 +1,40 @@
 {
   "extends": "@tsconfig/node18/tsconfig.json",
+  "include": ["src/**/*.ts", "test/**/*.ts"],
+  "exclude": ["node_modules"],
   "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
+    "module": "ESNext",
+    // "module": "NodeNext",
+    "moduleResolution": "node",
+    // "moduleResolution": "NodeNext",
+    "newLine": "LF",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "preserveConstEnums": true,
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "target": "ES2018",
+
+    "allowSyntheticDefaultImports": true,
     "allowImportingTsExtensions": true,
 //    "emitDeclarationOnly": true,
-    "declaration": true,
-//    "moduleResolution": "node18",
-    "outDir": "dist/",
-    "rootDir": "src/",
+// //   "declaration": true,
+// //     "moduleResolution": "node",
+    "outDir": "dist",
+//    "rootDir": "src",
     "sourceMap": true,
-    "target": "es2016"
+// //    "target": "es2016",
+//    "noEmit": true
   },
   "ts-node": {
     "esm": true,
@@ -16,3 +42,4 @@
   }
 //  "exclude": ["test/**"]
 }
+

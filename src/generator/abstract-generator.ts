@@ -1,7 +1,7 @@
 import type { JSONSchema7 } from 'json-schema';
 import type { JsonValue } from 'type-fest';
 import { JSONSchemaFaker } from 'json-schema-faker';
-import { Generator } from './generator.ts';
+import { Generator } from './generator';
 
 abstract class AbstractGenerator implements Generator {
   #attr: string;
@@ -70,9 +70,11 @@ abstract class AbstractGenerator implements Generator {
           const newTokens = originalKey.split('.');
           let rspObj = clonedRsp;
           for (let i = 0; i < newTokens.length - 1; i += 1) {
-            rspObj = rspObj[newTokens[i]];
+            const idx = newTokens[i] as string;
+            rspObj = rspObj[idx];
           }
-          rspObj[newTokens[newTokens.length - 1]] = this.generateValue(def);
+          const idx = newTokens[newTokens.length - 1] as string;
+          rspObj[idx] = this.generateValue(def);
         } else {
           clonedRsp[field] = this.generateValue(def);
         }
@@ -84,14 +86,17 @@ abstract class AbstractGenerator implements Generator {
           newField = `${newField}.${tokens[i]}`;
         }
         const newFields = new Set<string>();
-        newFields.add(newField);
+        if (newField) {
+          newFields.add(newField);
+        }
 
         // @ts-ignore the properties field exist in a schema
         const def = schema.properties[tokens[0]] as JSONSchema7;
-        let newParentKey = tokens[0];
+        let newParentKey = tokens[0] as string;
         if (parentKey) {
           newParentKey = `${parentKey}.${tokens[0]}`;
         }
+
         this.getResponse(def, newFields, allFieldsRsp, responses, newParentKey);
       }
     });

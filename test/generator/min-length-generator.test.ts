@@ -2,7 +2,7 @@
 import { describe, expect, it } from '@jest/globals';
 // eslint-disable-next-line import/no-unresolved
 import { JSONSchema7 } from 'json-schema';
-import MinLengthGenerator from '../../src/generator/min-length-generator.ts';
+import MinLengthGenerator from '../../src/generator/min-length-generator';
 
 describe('sum module', () => {
   it('adds 1 + 2 to equal 3', async () => {
