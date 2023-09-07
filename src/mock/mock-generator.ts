@@ -3,9 +3,9 @@ import type { JSONSchema7 } from 'json-schema';
 import type { JsonValue } from 'type-fest';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import _ from 'lodash';
-import { HttpMethods } from 'oas/dist/rmoas.types';
+import { HttpMethods } from 'oas/dist/rmoas.types.js';
 import OASNormalize from 'oas-normalize';
-import GeneratorRegistry from '../generator/generator-registry';
+import GeneratorRegistry from '../generator/generator-registry.js';
 
 // eslint-disable-next-line import/prefer-default-export
 export class MockGenerator {

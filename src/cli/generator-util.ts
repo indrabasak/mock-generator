@@ -2,8 +2,8 @@
 
 import fs from 'fs';
 import { Command, InvalidArgumentError, Option } from 'commander';
-import { MockGenerator } from '../mock/mock-generator';
-import FileUtil from '../util/file-util';
+import { MockGenerator } from '../mock/mock-generator.js';
+import FileUtil from '../util/file-util.js';
 
 // @ts-ignore hello
 // eslint-disable-next-line no-unused-vars
@@ -48,13 +48,6 @@ program
   )
   .requiredOption('-s, --statuscode <statuscode>', 'statuscode', customParseInt)
   .action(async (options) => {
-    console.log('hello --------');
-    console.log(options.input);
-    console.log(options.output);
-    console.log(options.path);
-    console.log(options.method);
-    console.log(options.statuscode);
-
     try {
       const specStr = fs.readFileSync(options.input, 'utf8');
       if (!fs.existsSync(options.output)) {

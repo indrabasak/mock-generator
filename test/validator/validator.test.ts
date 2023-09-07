@@ -5,7 +5,7 @@ import { JSONSchemaFaker } from 'json-schema-faker';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import Ajv from 'ajv';
 
-const hostname =  '[a-zA-Z]{1,33}\\.[a-z]{2,4}';
+const hostname = '[a-zA-Z]{1,33}\\.[a-z]{2,4}';
 const FRAGMENT = '[a-zA-Z][a-zA-Z0-9+-.]*';
 const URI_PATTERN = `https?://${hostname}(?:${FRAGMENT})+`;
 const PARAM_PATTERN = '(?:\\?([a-z]{1,7}(=\\w{1,5})?&){0,3})?';

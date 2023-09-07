@@ -1,19 +1,19 @@
 import type { JSONSchema7 } from 'json-schema';
 import type { JsonValue } from 'type-fest';
 import { JSONSchemaFaker } from 'json-schema-faker';
-import { Generator } from './generator';
+import { Generator } from './generator.js';
 
 abstract class AbstractGenerator implements Generator {
-  #attr: string;
+  private readonly attribute: string;
 
-  constructor(attr: string) {
-    this.#attr = attr;
+  protected constructor(attribute: string) {
+    this.attribute = attribute;
   }
 
   // eslint-disable-next-line no-unused-vars
   public generate(schema: JSONSchema7): Array<JsonValue> {
     const fields = new Set<string>();
-    this.getFields(schema, fields, this.#attr, null);
+    this.getFields(schema, fields, this.attribute, null);
 
     const responses: Array<JsonValue> = [];
     JSONSchemaFaker.option({

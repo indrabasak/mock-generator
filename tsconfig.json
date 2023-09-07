@@ -1,6 +1,6 @@
 {
   "extends": "@tsconfig/node18/tsconfig.json",
-  "include": ["src/**/*.ts", "test/**/*.ts"],
+  "include": ["src/**/*.ts", "test/**/*.ts", ".eslintrc.yml", "babel.config.js", "jest.config.ts"],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "composite": true,
@@ -9,10 +9,10 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
-    "module": "ESNext",
-    // "module": "NodeNext",
-    "moduleResolution": "node",
-    // "moduleResolution": "NodeNext",
+    // "module": "ESNext",
+    "module": "NodeNext",
+    // "moduleResolution": "node",
+    "moduleResolution": "NodeNext",
     "newLine": "LF",
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
@@ -23,10 +23,11 @@
     "removeComments": true,
     "resolveJsonModule": true,
     "strict": true,
-    "target": "ES2018",
+    "target": "es2021",
+//    "target": "ESNext",
 
     "allowSyntheticDefaultImports": true,
-    "allowImportingTsExtensions": true,
+//    "allowImportingTsExtensions": true,
 //    "emitDeclarationOnly": true,
 // //   "declaration": true,
 // //     "moduleResolution": "node",
@@ -40,6 +41,5 @@
     "esm": true,
     "experimentalSpecifierResolution": "node"
   }
-//  "exclude": ["test/**"]
 }
 

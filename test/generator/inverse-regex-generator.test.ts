@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { describe, expect, it } from '@jest/globals';
 import type { JSONSchema7 } from 'json-schema';
-import InverseRegexGenerator from '../../src/generator/inverse-regex-generator';
+import InverseRegexGenerator from '../../src/generator/inverse-regex-generator.js';
 
 describe('sum module', () => {
   it('test invalid schema for string properties with pattern', async () => {
