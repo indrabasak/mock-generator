@@ -1,14 +1,16 @@
-import fs from 'fs';
-import { describe, expect, it } from '@jest/globals';
+// import fs from 'fs';
+import { readFile } from 'fs/promises';
+// import { describe, expect, it } from '@jest/globals';
 import Oas, { Operation } from 'oas';
 import OASNormalize from 'oas-normalize';
-import VariableFieldsGenerator from '../../src/generator/variable-fields-generator.js';
+import { VariableFieldsGenerator } from '../../src/generator/variable-fields-generator.js';
 
 describe('sum module', () => {
   it('adds 1 + 2 to equal 3', async () => {
     // expect(sum(1, 2)).toBe(3);
     console.log('hello');
-    const specStr = fs.readFileSync('specs/test-demo.yaml', 'utf8');
+    // const specStr = fs.readFileSync('specs/test-demo.yaml', 'utf8');
+    const specStr = await readFile('specs/test-demo.yaml', 'utf8');
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const oasNormalize = new OASNormalize(specStr);

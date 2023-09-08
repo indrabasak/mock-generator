@@ -1,6 +1,4 @@
 import fs from 'fs';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { describe, it } from '@jest/globals';
 import { MockGenerator } from '../../src/mock/mock-generator.js';
 
 describe('sum module', () => {

@@ -1,6 +1,6 @@
 {
   "name": "mock-generator",
-  "version": "0.0.4",
+  "version": "0.0.0",
   "description": "generates mock sample data from an Open API Spec",
   "type": "module",
   "repository": "https://github.com/indrabasak/mock-generator.git",
@@ -9,11 +9,12 @@
   "private": false,
   "scripts": {
     "build": "rm -rf dist && tsc",
-    "test": "NODE_ENV=test ./node_modules/.bin/jest --silent --coverage -c jest.config.ts",
+    "test1": "NODE_ENV=test ./node_modules/.bin/jest --silent --coverage -c jest.config.ts",
+    "test": "npx jest --silent --coverage --config jest.config.ts",
     "lint": "eslint ./src  ./test -f table"
   },
   "bin": {
-    "mockgen": "dist/src/cli/generator-util.js"
+    "mockgenx": "dist/src/cli/mockgenx.js"
   },
   "publishConfig": {
     "registry": "https://npm.autodesk.com:443/artifactory/api/npm/autodesk-npm/"
@@ -21,9 +22,10 @@
   "devDependencies": {
     "@babel/core": "^7.22.10",
     "@babel/preset-env": "^7.22.10",
+    "@babel/preset-typescript": "^7.22.15",
     "@jest/globals": "^29.6.2",
     "@tsconfig/node18": "^18.2.0",
-    "@types/node": "^20.5.0",
+    "@types/jest": "^29.5.4",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "@typescript-eslint/parser": "^6.4.0",
     "ajv": "^8.12.0",
@@ -51,6 +53,7 @@
   "dependencies": {
     "@types/json-schema": "^7.0.12",
     "@types/lodash": "^4.14.197",
+    "@types/node": "^20.6.0",
     "commander": "^11.0.0",
     "json-schema-faker": "^0.5.3",
     "oas": "^20.10.1",

@@ -1,9 +1,9 @@
 import type { JSONSchema7 } from 'json-schema';
 import type { JsonValue } from 'type-fest';
 import { JSONSchemaFaker } from 'json-schema-faker';
-import AbstractGenerator from './abstract-generator.js';
+import { AbstractGenerator } from './abstract-generator.js';
 
-class InverseRegexGenerator extends AbstractGenerator {
+export class InverseRegexGenerator extends AbstractGenerator {
   constructor() {
     super('pattern');
   }
@@ -60,4 +60,3 @@ class InverseRegexGenerator extends AbstractGenerator {
   }
 }
 
-export default InverseRegexGenerator;

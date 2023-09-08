@@ -3,7 +3,7 @@ import type { JsonValue } from 'type-fest';
 import { JSONSchemaFaker } from 'json-schema-faker';
 import { Generator } from './generator.js';
 
-abstract class AbstractGenerator implements Generator {
+export abstract class AbstractGenerator implements Generator {
   private readonly attribute: string;
 
   protected constructor(attribute: string) {
@@ -106,4 +106,3 @@ abstract class AbstractGenerator implements Generator {
   abstract generateValue(property: JSONSchema7): JsonValue;
 }
 
-export default AbstractGenerator;

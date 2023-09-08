@@ -3,6 +3,7 @@
   "include": ["src/**/*.ts", "test/**/*.ts", ".eslintrc.yml", "babel.config.js", "jest.config.ts"],
   "exclude": ["node_modules"],
   "compilerOptions": {
+    "allowJs": true,
     "composite": true,
     "declaration": true,
     "declarationMap": true,
@@ -23,8 +24,8 @@
     "removeComments": true,
     "resolveJsonModule": true,
     "strict": true,
-    "target": "es2021",
-//    "target": "ESNext",
+//    "target": "es2021",
+    "target": "ESNext",
 
     "allowSyntheticDefaultImports": true,
 //    "allowImportingTsExtensions": true,
@@ -35,7 +36,7 @@
 //    "rootDir": "src",
     "sourceMap": true,
 // //    "target": "es2016",
-//    "noEmit": true
+//    "noEmit": true,
   },
   "ts-node": {
     "esm": true,

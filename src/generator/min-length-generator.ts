@@ -1,9 +1,9 @@
 import type { JSONSchema7 } from 'json-schema';
 import type { JsonValue } from 'type-fest';
 import { JSONSchemaFaker } from 'json-schema-faker';
-import AbstractGenerator from './abstract-generator.js';
+import { AbstractGenerator } from './abstract-generator.js';
 
-class MinLengthGenerator extends AbstractGenerator {
+export class MinLengthGenerator extends AbstractGenerator {
   constructor() {
     super('minLength');
   }
@@ -21,4 +21,4 @@ class MinLengthGenerator extends AbstractGenerator {
   }
 }
 
-export default MinLengthGenerator;
+// export default MinLengthGenerator;

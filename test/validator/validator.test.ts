@@ -1,5 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { describe, it } from '@jest/globals';
 import type { JSONSchema7 } from 'json-schema';
 import { JSONSchemaFaker } from 'json-schema-faker';
 // eslint-disable-next-line import/no-extraneous-dependencies

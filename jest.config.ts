@@ -12,20 +12,29 @@ const config: Config = {
     clearMocks: true,
 
     transform: {
-        '\\.[jt]sx?$': 'ts-jest',
+        // '^.+\\.[jt]sx?$':
+        //     ['ts-jest', {
+        //         babel: true,
+        //         tsConfig: 'tsconfig.json'
+        //     }]
+        // '^.+\\.[jt]sx?$': 'ts-jest',
+        '^.+\\.[jt]sx?$': ['ts-jest', {useESM: true, babel: true,
+            tsconfig: 'tsconfig.json'}]
     },
 
-    globals: {
-        'ts-jest': {
-            'useESM': true
-        }
-    },
+    // globals: {
+    //     'ts-jest': {
+    //         useESM: true,
+    //         tsconfig: 'tsconfig.json'
+    //     }
+    // },
 
     moduleNameMapper: {
-        "(.+)\\.js": "$1"
+        '(.+)\\.js': '$1',
+        '^@jest/globals': require.resolve("@jest/globals"),
     },
 
-    extensionsToTreatAsEsm: [".ts"],
+    extensionsToTreatAsEsm: ['.ts'],
 
     collectCoverage: true,
     coverageDirectory: 'coverage',
