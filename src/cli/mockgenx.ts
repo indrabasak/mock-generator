@@ -2,7 +2,7 @@
 
 import fs from 'fs';
 import { Command, InvalidArgumentError, Option } from 'commander';
-import { MockGenerator } from '../mock/mock-generator.js';
+import MockGenerator from '../mock/mock-generator.js';
 import FileUtil from '../util/file-util.js';
 
 // @ts-ignore hello

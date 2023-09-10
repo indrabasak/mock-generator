@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { MockGenerator } from '../../src/mock/mock-generator.js';
+import MockGenerator from '../../src/mock/mock-generator.js';
 
 describe('sum module', () => {
   it('adds 1 + 2 to equal 3', async () => {

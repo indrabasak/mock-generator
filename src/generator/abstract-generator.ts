@@ -1,9 +1,9 @@
 import type { JSONSchema7 } from 'json-schema';
 import type { JsonValue } from 'type-fest';
 import { JSONSchemaFaker } from 'json-schema-faker';
-import { Generator } from './generator.js';
+import Generator from './generator.js';
 
-export abstract class AbstractGenerator implements Generator {
+export default abstract class AbstractGenerator implements Generator {
   private readonly attribute: string;
 
   protected constructor(attribute: string) {
@@ -105,4 +105,3 @@ export abstract class AbstractGenerator implements Generator {
   // eslint-disable-next-line no-unused-vars
   abstract generateValue(property: JSONSchema7): JsonValue;
 }
-

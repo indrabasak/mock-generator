@@ -1,9 +1,9 @@
 import type { JSONSchema7 } from 'json-schema';
 import type { JsonObject, JsonValue } from 'type-fest';
 import { JSONSchemaFaker } from 'json-schema-faker';
-import { Generator } from './generator.js';
+import Generator from './generator.js';
 
-export class VariableFieldsGenerator implements Generator {
+export default class VariableFieldsGenerator implements Generator {
   // @IGenerator.register
   // class VariableFieldsGenerator {
   // eslint-disable-next-line class-methods-use-this
@@ -28,4 +28,3 @@ export class VariableFieldsGenerator implements Generator {
     return response;
   }
 }
-

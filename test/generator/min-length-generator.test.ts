@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 // eslint-disable-next-line import/no-unresolved
 import { JSONSchema7 } from 'json-schema';
-import { MinLengthGenerator } from '../../src/generator/min-length-generator.js';
+import MinLengthGenerator from '../../src/generator/min-length-generator.js';
 
 describe('sum module', () => {
   it('adds 1 + 2 to equal 3', async () => {

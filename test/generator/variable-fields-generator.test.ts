@@ -3,7 +3,7 @@ import { readFile } from 'fs/promises';
 // import { describe, expect, it } from '@jest/globals';
 import Oas, { Operation } from 'oas';
 import OASNormalize from 'oas-normalize';
-import { VariableFieldsGenerator } from '../../src/generator/variable-fields-generator.js';
+import VariableFieldsGenerator from '../../src/generator/variable-fields-generator.js';
 
 describe('sum module', () => {
   it('adds 1 + 2 to equal 3', async () => {

@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-unresolved
 import { JSONSchema7 } from 'json-schema';
-import { MaxLengthGenerator } from '../../src/generator/max-length-generator.js';
+import MaxLengthGenerator from '../../src/generator/max-length-generator.js';
 
 describe('sum module', () => {
   it('adds 1 + 2 to equal 3', async () => {

@@ -6,12 +6,11 @@ import _ from 'lodash';
 import OASNormalize from 'oas-normalize';
 import GeneratorRegistry from '../generator/generator-registry.js';
 
-// eslint-disable-next-line import/prefer-default-export
-export class MockGenerator {
-  #schemaStr: string;
+export default class MockGenerator {
+  private readonly schemaStr: string;
 
   // @ts-ignore TS2351: This expression is not constructable.
-  #oas: Oas;
+  private oas: Oas;
 
   public static async getMockGenerator(
     schemaStr: string
@@ -23,17 +22,17 @@ export class MockGenerator {
   }
 
   constructor(schemaStr: string) {
-    this.#schemaStr = schemaStr;
+    this.schemaStr = schemaStr;
   }
 
   public async init() {
-    // @ts-ignore
-    const oasNormalize = new OASNormalize(this.#schemaStr);
+    // @ts-ignore TS2351: This expression is not constructable.
+    const oasNormalize = new OASNormalize(this.schemaStr);
     const jsonSchema = await oasNormalize.validate({ convertToLatest: true });
 
     // @ts-ignore TS2351: This expression is not constructable.
-    this.#oas = new Oas(jsonSchema);
-    await this.#oas.dereference();
+    this.oas = new Oas(jsonSchema);
+    await this.oas.dereference();
   }
 
   public getValidMockResponses(
@@ -41,7 +40,7 @@ export class MockGenerator {
     method: string = 'get',
     statusCode: string = '200'
   ): Array<JsonValue> {
-    const schema = this.#getResponseSchema(path, method, statusCode);
+    const schema = this.getResponseSchema(path, method, statusCode);
     const responses: Array<JsonValue> = [];
 
     GeneratorRegistry.getValidGenerators().forEach((generator) => {
@@ -56,7 +55,7 @@ export class MockGenerator {
     method: string = 'get',
     statusCode: string = '200'
   ): Array<JsonValue> {
-    const schema = this.#getResponseSchema(path, method, statusCode);
+    const schema = this.getResponseSchema(path, method, statusCode);
     const responses: Array<JsonValue> = [];
 
     GeneratorRegistry.getInvalidGenerators().forEach((generator) => {
@@ -66,13 +65,13 @@ export class MockGenerator {
     return responses;
   }
 
-  #getResponseSchema(
+  private getResponseSchema(
     path: string,
     method: string = 'get',
     statusCode: string = '200',
     content: string = 'application/json'
   ): JSONSchema7 {
-    const operation: Operation = this.#oas.operation(path, method, {});
+    const operation: Operation = this.oas.operation(path, method, {});
 
     const schema =
       // @ts-ignore: OpenAPIV3_1.ResponseObject does have a content method
