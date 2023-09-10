@@ -4,6 +4,7 @@
   "exclude": ["node_modules"],
   "compilerOptions": {
     "allowJs": true,
+//    "allowSyntheticDefaultImports": true,
     "composite": true,
     "declaration": true,
     "declarationMap": true,
@@ -26,8 +27,6 @@
     "strict": true,
 //    "target": "es2021",
     "target": "ESNext",
-
-    "allowSyntheticDefaultImports": true,
 //    "allowImportingTsExtensions": true,
 //    "emitDeclarationOnly": true,
 // //   "declaration": true,
